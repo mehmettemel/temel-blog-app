@@ -41,7 +41,7 @@ const UserInfo = () => {
 
   if (!auth.user) return <Loading />
   return (
-    <div className='flex flex-col px-4 py-8  bg-neutral  shadow-lg  my-5'>
+    <div className='flex flex-col px-4 py-8  bg-neutral  shadow-lg  my-5 max-w-2xl mx-auto rounded-box'>
       <div className='self-center mb-2 text-xl font-bold sm:text-2xl text-white'>User Information</div>
 
       <div className='p-6'>

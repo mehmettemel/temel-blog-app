@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.post('/blog', auth, blogControllers.createBlog)
 router.get('/home/blogs', blogControllers.getHomeBlogs)
-router.get('/blogs/:category_id', blogControllers.getBlogsByCategory)
+router.get('/blogs/category/:id', blogControllers.getBlogsByCategory)
+router.get('/blogs/user/:id', blogControllers.getBlogsByUser)
 
 export default router

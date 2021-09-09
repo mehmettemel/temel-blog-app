@@ -5,8 +5,10 @@ import { IBlog } from '../../utils/Typescript'
 import { ALERT, IAlertType } from '../types/notificationsTypes'
 import {
   GET_BLOGS_CATEGORY_ID,
+  GET_BLOGS_USER_ID,
   GET_HOME_BLOGS,
   IGetBlogsCategoryType,
+  IGetBlogsUserType,
   IGetHomeBlogsType,
 } from '../types/blogTypes'
 export const createBlog = (blog: IBlog, token: string) => async (dispatch: Dispatch<IAlertType>) => {
@@ -52,10 +54,30 @@ export const getBlogsByCategoryId =
       let value = search ? search : `?page${1}`
       dispatch({ type: ALERT, payload: { loading: true } })
 
-      const res = await getAPI(`/blogs/${id}${value}&limit=${limit}`)
+      const res = await getAPI(`/blogs/category/${id}${value}&limit=${limit}`)
 
       dispatch({
         type: GET_BLOGS_CATEGORY_ID,
+        payload: { ...res.data, id, search },
+      })
+
+      dispatch({ type: ALERT, payload: { loading: false } })
+    } catch (err: any) {
+      dispatch({ type: ALERT, payload: { errors: err.response.data.msg } })
+    }
+  }
+
+export const getBlogsByUserId =
+  (id: string, search: string) => async (dispatch: Dispatch<IAlertType | IGetBlogsUserType>) => {
+    try {
+      let limit = 4
+      let value = search ? search : `?page${1}`
+      dispatch({ type: ALERT, payload: { loading: true } })
+
+      const res = await getAPI(`/blogs/user/${id}${value}&limit=${limit}`)
+
+      dispatch({
+        type: GET_BLOGS_USER_ID,
         payload: { ...res.data, id, search },
       })
 

@@ -4,6 +4,8 @@ import notification from './notificationsReducer'
 import categories from './categoryReducer'
 import blogs from './blogsReducer'
 import blogsByCategory from './blogsByCategoryReducer'
+import blogsByUser from './blogsByUserReducer'
+import otherInfo from './otherInfoReducer'
 
 export default combineReducers({
   auth,
@@ -11,4 +13,6 @@ export default combineReducers({
   categories,
   blogs,
   blogsByCategory,
+  otherInfo,
+  blogsByUser,
 })
