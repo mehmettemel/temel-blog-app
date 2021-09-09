@@ -44,7 +44,7 @@ const Header = () => {
   const navLinks = auth.access_token ? afLoginLinks : bfLoginLinks
   return (
     <>
-      <div className=' container mx-auto navbar mt-2 shadow-lg bg-neutral text-neutral-content rounded-box'>
+      <div className=' container mx-auto navbar mt-2 shadow-lg bg-neutral text-neutral-content rounded-box '>
         <div className='flex-none lg:flex'>
           <button className='btn btn-square btn-ghost' onClick={() => setSetDrawer(!setDrawer)}>
             {!setDrawer ? (
@@ -121,7 +121,7 @@ const Header = () => {
         )}
       </div>
       {setDrawer ? (
-        <div ref={drawerRef} className='py-4 absolute left-0 right-0 max-w-md mx-auto px-4 z-10 '>
+        <div ref={drawerRef} className='py-4 absolute left-0 right-0 max-w-md mx-auto px-4 z-30 '>
           <ul className='menu py-3 shadow-lg bg-base-100 rounded-box space-y-2'>
             {navLinks.map((item, index) => (
               <li key={index} className='menu-title'>

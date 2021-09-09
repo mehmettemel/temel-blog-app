@@ -7,12 +7,14 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { refreshToken } from './redux/actions/authActions'
 import { getCategories } from './redux/actions/categoryActions'
+import { getHomeBlogs } from './redux/actions/blogActions'
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(refreshToken())
     dispatch(getCategories())
+    dispatch(getHomeBlogs())
   }, [dispatch])
   return (
     <>

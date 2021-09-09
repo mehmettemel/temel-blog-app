@@ -1,11 +1,10 @@
-import { auth } from 'google-auth-library'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormSubmit, IBlog, InputChange, RootStore } from '../../utils/Typescript'
 import Quill from '../editor/ReactQuill'
 import { validCreateBlog } from '../../utils/Valid'
 import { ALERT } from '../../redux/types/notificationsTypes'
-import { imageUpload } from '../../utils/ImageUpload'
+import { createBlog } from '../../redux/actions/blogActions'
 interface IProps {
   blog: IBlog
   setBlog: (blog: IBlog) => void
@@ -43,23 +42,15 @@ const CreateBlog: React.FC<IProps> = ({ blog, setBlog }) => {
   const handleSubmit = async (e: FormSubmit) => {
     e.preventDefault()
     if (!auth.access_token) return
-    let url = ''
 
     const check = validCreateBlog({ ...blog, content: text })
     if (check.errLength !== 0) {
       return dispatch({ type: ALERT, payload: { errors: check.errMsg } })
     }
 
-    if (typeof blog.thumbnail !== 'string') {
-      const photo = await imageUpload(blog.thumbnail)
-      url = photo.url
-    } else {
-      url = blog.thumbnail
-    }
+    let newData = { ...blog, content: body }
 
-    let newData = { ...blog, thumbnail: url, content: body }
-
-    dispatch(createBlog(data, auth.access_token))
+    dispatch(createBlog(newData, auth.access_token))
   }
   return (
     <section className='p-6 '>
@@ -138,7 +129,9 @@ const CreateBlog: React.FC<IProps> = ({ blog, setBlog }) => {
                 >
                   <option value=''>Select your category</option>
                   {categories.map((category) => (
-                    <option key={category._id}>{category.name}</option>
+                    <option key={category._id} value={category._id}>
+                      {category.name}
+                    </option>
                   ))}
                 </select>
               </div>

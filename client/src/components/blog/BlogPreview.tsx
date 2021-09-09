@@ -31,7 +31,7 @@ const BlogPreview: React.FC<IProps> = ({ blog }) => {
             <p>{blog.description}</p>
             <div className='card-actions'>
               <div className='badge badge-primary'>{new Date(blog.createdAt).toLocaleString()}</div>
-              {blog.category && <div className='badge badge-ghost'>{blog.category}</div>}
+              {/* {blog.category && <div className='badge badge-ghost'>{blog.category}</div>} */}
             </div>
           </div>
         </div>

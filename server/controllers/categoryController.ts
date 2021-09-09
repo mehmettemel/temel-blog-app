@@ -45,7 +45,7 @@ const categoryController = {
         {
           _id: req.params.id,
         },
-        { name: req.body.name }
+        { name: req.body.name.toLowerCase() }
       )
 
       res.json({ msg: 'Update Success!' })

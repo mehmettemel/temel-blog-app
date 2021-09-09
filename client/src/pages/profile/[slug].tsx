@@ -8,7 +8,7 @@ const Profile = () => {
   const { auth } = useSelector((state: RootStore) => state)
   return (
     <>
-      <h2>Profile</h2>
+      <h1 className='text-lg lg:text-4xl text-primary font-extrabold text-center mb-4'>⭐Profile Page⭐</h1>
       <div className='grid grid-cols-1 lg:grid-cols-2 px-4'>
         <UserInfo />
         <div></div>
