@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { IBlog, RootStore } from '../utils/Typescript'
 import Loading from '../components/notifications/Loading'
 import CreateBlog from '../components/blog/CreateBlog'
@@ -17,8 +17,7 @@ const Blog_Create = () => {
   }
   const [blog, setBlog] = useState<IBlog>(initState)
 
-  const { auth, categories } = useSelector((state: RootStore) => state)
-  const dispatch = useDispatch()
+  const { auth } = useSelector((state: RootStore) => state)
 
   if (!auth.access_token) return <Loading />
   return (

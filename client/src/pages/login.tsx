@@ -8,11 +8,15 @@ import { RootStore } from '../utils/Typescript'
 const Login = () => {
   const [sms, setSms] = useState(false)
   const history = useHistory()
+  console.log(history)
 
   const { auth } = useSelector((state: RootStore) => state)
 
   useEffect(() => {
-    if (auth.access_token) history.push('/')
+    if (auth.access_token) {
+      let url = history.location.search.replace('?', '/')
+      history.push(url)
+    }
   }, [auth.access_token, history])
   return (
     <div className='flex flex-wrap w-full py-6'>
@@ -36,7 +40,7 @@ const Login = () => {
           <div className='pt-2 pb-12 text-center'>
             <p>
               Don&#x27;t have an account?{' '}
-              <Link to='/register' className='link-secondary'>
+              <Link to={`/register${history.location.search}`} className='link-secondary'>
                 Register here.
               </Link>
             </p>

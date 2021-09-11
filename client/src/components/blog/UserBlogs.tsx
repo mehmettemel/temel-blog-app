@@ -5,6 +5,7 @@ import { useHistory, useParams, Link } from 'react-router-dom'
 import { getBlogsByUserId } from '../../redux/actions/blogActions'
 import Loading from '../notifications/Loading'
 import Pagination from '../global/Pagination'
+import AlertIcon from '../icons/AlertIcon'
 const UserBlogs = () => {
   const dispatch = useDispatch()
   const { blogsByUser } = useSelector((state: RootStore) => state)
@@ -41,25 +42,14 @@ const UserBlogs = () => {
     return (
       <div className='alert alert-warning  my-4'>
         <div className='flex-1'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            className='w-6 h-6 mx-2 stroke-current'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
-              d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'
-            ></path>
-          </svg>
+          <AlertIcon />
           <label>This user does not have blog article</label>
         </div>
       </div>
     )
   return (
-    <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-neutral rounded-box shadow-sm my-4'>
+    <div className='px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-12 bg-neutral rounded-box shadow-sm my-4'>
+      <h2 className='text-accent text-lg md:text-2xl text-center mb-6 uppercase'> Blog Articles</h2>
       <div className='mb-10 border-t border-b divide-y'>
         {blogs.map((blog) => (
           <div key={blog._id} className='grid py-8 sm:grid-cols-4'>

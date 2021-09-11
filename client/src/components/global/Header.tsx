@@ -44,7 +44,7 @@ const Header = () => {
   const navLinks = auth.access_token ? afLoginLinks : bfLoginLinks
   return (
     <>
-      <div className=' container mx-auto navbar mt-2 shadow-lg bg-neutral text-neutral-content rounded-box '>
+      <div className='  container mx-auto navbar mt-2 shadow-lg bg-neutral text-neutral-content rounded-box '>
         <div className='flex-none lg:flex'>
           <button className='btn btn-square btn-ghost' onClick={() => setSetDrawer(!setDrawer)}>
             {!setDrawer ? (

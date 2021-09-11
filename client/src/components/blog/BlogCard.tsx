@@ -10,7 +10,7 @@ const BlogCard: React.FC<IProps> = ({ blog }) => {
     <div className='card shadow-xl image-full'>
       <figure>{typeof blog.thumbnail === 'string' && <img src={blog.thumbnail} alt='thumbnail' />}</figure>
       <div className='justify-end card-body'>
-        <h2 className='card-title'>
+        <h2 className='card-title capitalize'>
           <Link to={`/blog/${blog._id}`}>{blog.title.slice(0, 50) + '...'}</Link>
         </h2>
         <p>{blog.description.slice(0, 100) + '...'}</p>

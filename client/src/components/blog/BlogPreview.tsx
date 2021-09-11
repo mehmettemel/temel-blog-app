@@ -7,7 +7,7 @@ interface IProps {
 const BlogPreview: React.FC<IProps> = ({ blog }) => {
   return (
     <>
-      {blog.title && (
+      {blog.title ? (
         <div className='card bordered '>
           <figure>
             {blog.thumbnail && (
@@ -35,6 +35,8 @@ const BlogPreview: React.FC<IProps> = ({ blog }) => {
             </div>
           </div>
         </div>
+      ) : (
+        <div className='artboard phone-1 horizontal artboard-demo shadow-lg'>Blog Preview</div>
       )}
     </>
   )

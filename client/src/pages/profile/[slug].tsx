@@ -12,7 +12,7 @@ const Profile = () => {
   return (
     <>
       <h1 className='text-lg lg:text-4xl text-primary font-extrabold text-center mb-4'>⭐Profile Page⭐</h1>
-      <div className='grid  grid-cols-1 md:grid-cols-2 gap-4 items-start'>
+      <div className='grid  grid-cols-1 lg:grid-cols-2 gap-4 items-start'>
         {auth.user?._id === slug ? <UserInfo /> : <OtherInfo id={slug} />}
         <UserBlogs />
       </div>
